@@ -6,7 +6,7 @@ metadata:
   title: Example Node.js Template
   description: An example template for the scaffolder that creates a simple Node.js service
 spec:
-  owner: user:guest
+  owner: schen0614
   type: service
 
   # These parameters are used to generate the input form in the frontend, and are
@@ -43,9 +43,12 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./content
+        url: ./skeleton
         values:
           name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
     # This step publishes the contents of the working directory to GitHub.
     - id: publish
